@@ -7,3 +7,9 @@ pool:
 steps:
 - script: mvnw.cmd clean package
   displayName: 'Build using Maven Wrapper'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: 'target'
+    artifactName: 'drop'
+    publishLocation: 'Container'
