@@ -5,11 +5,15 @@ pool:
   name: 'Testagent'
 
 steps:
-- script: mvnw.cmd clean package
-  displayName: 'Build using Maven Wrapper'
+- script: mvnw.cmd clean test package
+  displayName: 'Build and Run Tests'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    testRunTitle: 'Regression Test Results'
 
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: 'target'
     artifactName: 'drop'
-    publishLocation: 'Container'
