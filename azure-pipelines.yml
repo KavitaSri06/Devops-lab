@@ -1,12 +1,12 @@
 trigger:
-- main
+- main   # or master
 
 pool:
-  name: 'Testagent'
+  name: 'TestAgent'   # self-hosted agent
 
 steps:
 - script: mvnw.cmd clean test package
-  displayName: 'Build and Run Tests'
+  displayName: 'Build, Test and Package using Maven'
 
 - task: PublishTestResults@2
   inputs:
@@ -17,3 +17,4 @@ steps:
   inputs:
     pathToPublish: 'target'
     artifactName: 'drop'
+    publishLocation: 'Container'
