@@ -4,10 +4,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main   # change to master if your branch is master
+- main   # or master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'TestAgent'   # VERY IMPORTANT CHANGE
 
 steps:
 - task: Maven@3
@@ -17,6 +17,3 @@ steps:
     options: '-DskipTests=false'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.17'
-    mavenVersionOption: 'Default'
