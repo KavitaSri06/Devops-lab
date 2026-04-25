@@ -7,7 +7,7 @@ trigger:
 - main   # or master
 
 pool:
-  name: 'TestAgent'   # VERY IMPORTANT CHANGE
+  name: 'Testagent'   # VERY IMPORTANT CHANGE
 
 steps:
 - task: Maven@3
